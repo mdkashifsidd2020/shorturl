@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <style>
+        .center{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <h3 class="center">URL Shortener</h3>
+    <div class="center">
+        <form action="/" method="post">
+        <label>Enter Your URL</label>
+        <input type="text" name="url" placeholder="https://www.ermks.in">
+        <button type="submit">Generate Short URL</button>
+        </form>
+    </div>
+<br/><br/>
+<div>
+    <table border="2px" >
+        <thead>
+            <th>S.No</th>
+            <th>Short ID</th>
+            <th>Short URL</th>
+            <th>Total click</th>
+            <th>Original url</th>
+
+        </thead>
+        <% if(locals.allurl) { %>
+        <tbody>
+            
+             
+            
+            <% allurl.forEach((url,index) => { %>
+            <tr>
+                <td><%= index + 1 %></td>
+                <td><%= url.ShortID %></td>
+                 <td><a href="http://localhost:9100/<%= url.ShortID %>" target="_blank">Click here</a></td>  
+                <td><%= url.VisitedHistory.length %></td>
+                <td><%= url.RedirectURL %></td>
+            </tr>
+            <% }) %>
+            
+        </tbody>
+        <% } %>
+    </table>
+</div>
+
+
+</body>
+</html>
